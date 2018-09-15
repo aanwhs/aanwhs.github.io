@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#"
+	xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+
+<title>Boilr - Price alarms for Bitcoin, cryptocurrencies, cryptoassets, futures and options</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Boilr - Price alarms for Bitcoin, cryptocurrencies, cryptoassets, futures and options"/>
+<meta property="og:url" content="http://boilr.mobi/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="Android application which monitors Bitcoin, cryptocurrencies, cryptoassets and derivatives, triggering alarms according to user settings."/>
+<meta property="og:image" content="http://boilr.mobi/img/icon-boilr-facebook.png" />
+<meta property="og:image:secure_url" content="https://boilr.mobi/img/icon-boilr-facebook.png" />
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="css/boilr.css" />
+<link rel="stylesheet" href="css/colorbox.css" />
+<link rel="stylesheet" href="css/owl.carousel.css" />
+<link rel="stylesheet" href="css/owl.theme.css" />
+<link rel="icon" type="image/png" href="img/favicon.png" />
+
+<script>
+	 /*
+	 @licstart  The following is the entire license notice for the 
+    JavaScript code in this page.
+
+	Site to support and advertise boilr
+	Copyright (C) 2015   André Filipe Santos, David Ludovino and other 
+	contributors listed on GitHub.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    @licend  The above is the entire license notice
+    for the JavaScript code in this page.
+    */
+</script>
+
+<script id="nav-template" type="text/x-handlebars-template">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span>
+			</button>
+			<div class="navbar-inner">
+					<a class="navbar-brand " href="#video-wrap" rel="home">
+						<img src="img/icon-boilr.png"/>
+						<span>Boilr</span>
+					</a>
+			</div>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul id="nav" class="nav navbar-nav">
+				<li><a href="#features">{{features}}</a></li>
+				<li><a href="#download">{{download}}</a></li>
+				<li><a href="#support">{{support}}</a></li>
+				<li><a href="#permissions">{{permissions}}</a></li>
+				<li><a href="#exchanges">{{exchanges}}</a></li>
+				<li><a href="#donate">{{donate}}</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right social">
+				<li>
+					<a class="external" id="email-link" href="javascript:void(0);">
+						<img class="image-clip" src="img/icon-envelope-3.png" />
+					</a>
+				</li>
+				<li>
+					<a class="external" href="https://plus.google.com/107236041248948193283" rel="publisher" target="_blank">
+						<img class="image-clip" src="img/icon-google.png">
+					</a>
+				</li>
+				<li>
+					<a class="external" href="https://www.facebook.com/boilr" target="_blank">
+						<img class="image-clip" src="img/icon-facebook.png">
+					</a>
+				</li>
+				<li>
+					<a  class="external" href="https://twitter.com/boilrapp" target="_blank">
+						<img class="image-clip" src="img/icon-twitter.png">
+					</a>
+				</li>
+				<li>
+					<a class="external" href="https://www.reddit.com/r/Boilr" target="_blank">
+						<img class="image-clip" src="img/icon-reddit.png">
+					</a>
+				</li>
+				<li class="dropdown">
+          			<a href="#" class="dropdown-toggle external" data-toggle="dropdown" role="button" aria-expanded="false">{{language}} <span class="caret"></span></a>
+          			<ul class="dropdown-menu" role="menu">
+						<li><a href="/?lang=cs">Čeština</a></li>
+	            		<li><a href="/?lang=en">English</a></li>
+	            		<li><a href="/?lang=es">Español</a></li>
+	            		<li><a href="/?lang=fr">Français</a></li>
+						<li><a href="/?lang=pt">Português</a></li>
+	            		<li><a href="/?lang=zh">中文</a></li>
+          			</ul>
+        		</li>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script id="video-template" type="text/x-handlebars-template">
+	<video id="video_background" class="video_background" preload="auto" autoplay="autoplay" loop="loop" muted>
+		<source src="video/preview.webm" type="video/webm">
+		<source src="video/preview.ogg" type="video/ogg">
+		<source src="video/preview.mp4" type="video/mp4">
+	</video>
+	<div class="overlay">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<h1>{{subscribeOurNewsletter}}</h1>
+					<form  method="POST" action="http://mail.boilr.mobi/subscribe/newsletter" target="_blank">
+						<input class="hide" type="radio" name="digest" value="0" checked="">
+						<div class="input-group">
+							<input type="email" class="form-control" name="email" value="" 
+								placeholder="{{enterEmail}}">
+							<span class="input-group-btn">
+								<button type="Submit" name="email-button" class="btn btn-default">{{subscribe}}</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="never-miss-a-trade overlay">
+		<a href="https://twitter.com/intent/tweet?text=%23NeverMissATrade+with+@boilrapp" target="_blank">
+			<h1>#NeverMissATrade</h1>
+		</a>
+	</div>
+</script>
+
+<script id="main-template" type="text/x-handlebars-template">
+	<div class="jumbotron" id="features">
+		<h1 class="translate">{{features}}</h1>
+		<div class="row">
+			<div class="col-lg-6 col-sm-6 col-xs-12" id="frame">
+				<div id="owl">
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/alarm-list.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/exchanges.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/hit-creation.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/change-creation.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/hit-firing.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/search-pairs.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/app-settings.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/deleting-alarm.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/reordering-alarm.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/lang-chinese.png" />
+					</div>
+					<div class="item">
+						<img class="lazyOwl" data-src="img/screenshots/ligh-theme.png" />
+					</div>
+				</div>
+			</div> 	
+			<div id="explain" class="col-lg-3 col-sm-4 col-xs-12">
+			<p></p>
+			</div>
+			<div id="explain" class="col-lg-3 col-sm-2 col-xs-12">
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron" id="download">
+		<h1>{{downloadAndFork}}</h1>
+		</br>
+		<div class="row small-img">
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-fdroid.png">
+				<h2 class="text-center">F-Droid</h2>
+				<p class="text-center sub-title" style="color: transparent;">P</p>
+				<p class="text-center">
+					<a id="fdroid-link"
+						href="https://f-droid.org/repository/browse/?fdid=mobi.boilr.boilr"
+						target="_blank" class="btn btn-default sharp">{{toUpperCase download}}</a>
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-googleplay.png">
+				<h2 class="text-center">Google Play</h2>
+				<p class="text-center sub-title" style="color: transparent;">P</p>
+				<p class="text-center">
+					<a id="play-link"
+						href="https://play.google.com/store/apps/details?id=mobi.boilr.boilr"
+						target="_blank" class="btn btn-default sharp">{{toUpperCase download}}</a>
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-apk.png">
+				<h2 id="text-apk" class="text-center">APK</h2>
+				<div id="qr-apk" class="hidden"></div>
+				<p class="text-center sub-title">
+					(<a id="qr-apk-link"></a>)
+				</p>
+				<p class="text-center">
+					<a id="apk-link" href="" class="btn btn-default sharp disabled">{{toUpperCase download}}</a>
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img src="img/icon-github.png" class="image-clip center-block">
+				<h2 class="text-center">{{sourceCode}}</h2>
+				<p class="text-center sub-title" style="color: transparent;">P</p>
+				<p class="text-center">
+					<a href="https://github.com/drpout/boilr" target="_blank"
+						class="btn btn-default sharp">GitHub</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="jumbotron" id="support">
+		<h1>{{support}}</h1>
+		</br>
+		<p>{{bugsSubmitt}} <a id="issues-link" href="https://github.com/drpout/boilr/issues" target="_blank">{{GitHubIssues}}</a>.</br>{{beSpecific}}</p>
+		<p>{{browseFAQ}} <a id="faq-link" href="https://github.com/drpout/boilr/issues?q=label%3Aquestion" target="_blank">{{issuesLabeledQuestions}}</a>.</p>
+	</div>
+
+
+	<div class="jumbotron" id="permissions">
+		<h1>{{permissions}}</h1>
+		</br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>{{permission}}</th>
+					<th>{{reason}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{permSDCard}}</td>
+					<td>{{reasonSDCard}}</td>
+				</tr>
+				<tr>
+					<td>{{permScreenLock}}</td>
+					<td>{{reasonScreenLock}}</td>
+				</tr>
+				<tr>
+					<td>{{permNetworkAccess}}</td>
+					<td>{{reasonNetworkAccess}}</td>
+				</tr>
+				<tr>
+					<td>{{permNetworkConns}}</td>
+					<td>{{reasonNetworkConns}}</td>
+				</tr>
+				<tr>
+					<td>{{permStartup}}</td>
+					<td>{{reasonStartup}}</td>
+				</tr>
+				<tr>
+					<td>{{permVibration}}</td>
+					<td>{{reasonVibration}}</td>
+				</tr>
+				<tr>
+					<td>{{permPreventSleeping}}</td>
+					<td>{{reasonPreventSleeping}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="jumbotron" id="exchanges">
+		<h1>{{supportedExchanges}}</h1>
+		</br>
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>1BTCXE</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>1Ex.Trade</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Allcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>ANX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bit2C</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitBay</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitcoin.de</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitcoins Norway</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitcoinToYou</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitcurex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitfinex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>bitFlyer</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitKonan</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitMarket.pl</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitMaszyna</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitMEX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitso</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitstamp</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitt</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bittrex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitVC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BL3P</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BleuTrade</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC Markets</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC-E</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC100</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC38</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCBOX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCChina</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCExchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BtcTrade</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCTurk</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCXIndia</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bter</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BullionVault</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>C-CEX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CampBX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CEX.IO</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CHBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>ChileBit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinage</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coincheck</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinfloor</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinMate</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinplug</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinsBank</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinsecure</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinSquare</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinTree</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinut</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CRXzone</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Crypto Facilities</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Cryptonit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Cryptopia</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Digital Securities Exchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>EmpoEX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>FOXBIT</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>FYB-SE</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>FYB-SG</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Gatecoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>GDAX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>HitBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Huobi</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Ice3x</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Indacoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Independent Reserve</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>itBit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Korbit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Kraken</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>LakeBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Livecoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>LocalBitcoins</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Loyalbit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Mercado Bitcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Mulcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>NXT Asset Exchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>OKCoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Paymium</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Poloniex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Quadriga CX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Quoine</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>SurBitcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>SURBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Thailand Bitcoin Exchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>The Rock Trading</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Urdubit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Vaultoro</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>VBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>VirWox</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Yobit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Yuanbao</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Zaif</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Zyado</p></div>
+		</div>
+	</div>
+
+	<div class="jumbotron" id="donate">
+		<h1>{{donateOrTip}}</h1>
+		</br>
+		<p>{{boilrIs}} <a href="https://www.gnu.org/copyleft/gpl.html"
+				target="_blank">{{freeAsInFreedom}}</a>. {{donateOrTipText2}}
+		</p>
+		<div style='word-break: break-all;' class="row small-img">
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-bitcoin.png">
+				<h2 class="text-center">Bitcoin</h2>
+				<p class="text-center sub-title">
+					<a href="bitcoin:1PHuSWfuAwR6oz9qV93rTdMVozfM85Qqxx">1PHuSWfuAwR6oz9qV93rTdMVozfM85Qqxx</a><br />
+					(<a id="qr-donation-btc" href="img/donations-btc.png">{{QRCode}}</a>)
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-monero.png">
+				<h2 class="text-center">Monero</h2>
+				<p class="text-center sub-title">43KcTwXw5D43YRE8MSG4D7X3S2kjU6ehBABucyKAVNYnKbNxpGWZ8zGbEhCq79N4ZGDtefU5w4AGoeR6eNB5yMbEPhAw3FT</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-dogecoin.png">
+				<h2 class="text-center">Dogecoin</h2>
+				<p class="text-center sub-title">
+					<a href="dogecoin:DSSJyAtJy9xokkbfTUQ5NQov8M1WQ8FaYg">DSSJyAtJy9xokkbfTUQ5NQov8M1WQ8FaYg</a><br />
+					(<a id="qr-donation-doge" href="img/donations-doge.png">{{QRCode}}</a>)
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-nextcoin.png">
+				<h2 class="text-center">Nextcoin</h2>
+				<p class="text-center sub-title">NXT-PMQL-5RXJ-QE46-2L4SQ</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel-footer">
+		<p>{{originalFDroid}}. {{bitcoinBy}} <a href="http://bitcoinsymbol.org" target="_blank">ECOGEX</a>.
+			{{envelopeBy}} <a href="http://pixabay.com/en/envelope-mail-post-letter-petrol-306781" target="_blank">Nemo</a>.
+			{{redditBy}} <a href="http://www.flaticon.com/authors/icomoon" target="_blank">Icomoon</a>.
+			<br/>
+			{{modifiedVersion}} <a href="https://github.com/andrefbsantos" target="_blank">André Filipe Santos</a>,
+			<a href="https://github.com/dllud" target="_blank">David Ludovino</a>.
+			{{boilrBy}} <a href="http://cargocollective.com/algazarra/index" target="_blank">Algazarra</a>.
+			{{allLicensedUnder}} <a href="http://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC-BY-SA 4.0</a>.
+			<br />
+			{{websiteSource}} <a href="https://github.com/drpout/boilr-site" target="_blank">github.com/drpout/boilr-site</a>.
+			{{licensedUnder}} <a href="https://github.com/drpout/boilr-site/blob/gh-pages/LICENSE" target="_blank">GNU AGPL v3+</a>.
+			<br/>
+			<a href="jslicense.html" rel="jslicense">{{jsLicenseInformation}}</a>
+		</p>
+	</div>
+
+</script>
+</head>
+
+
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse"
+	role="navigation" id="navbar">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="navbar-inner">
+				<a class="navbar-brand" href="#video-wrap" rel="home">
+				<img src="img/icon-boilr.png"/>
+				<span>Boilr</span>
+				</a>
+			</div>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul id="nav" class="nav navbar-nav ">
+				<li><a href="#features">Features</a></li>
+				<li><a href="#download">Download</a></li>
+				<li><a href="#support">Support</a></li>
+				<li><a href="#permissions">Permissions</a></li>
+				<li><a href="#exchanges">Exchanges</a></li>
+				<li><a href="#donate">Donate</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://plus.google.com/107236041248948193283"
+					rel="publisher" target="_blank"> <img class="image-clip hover"
+						src="img/icon-google.png"></a></li>
+				<li><a href="https://www.facebook.com/boilr" target="_blank">
+						<img class="image-clip hover" src="img/icon-facebook.png">
+				</a></li>
+				<li><a href="https://twitter.com/boilrapp" target="_blank">
+						<img class="image-clip hover" src="img/icon-twitter.png">
+				</a></li>
+				<li><a href="https://www.reddit.com/r/Boilr" target="_blank">
+						<img class="image-clip hover" src="img/icon-reddit.png">
+				</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="video-wrap" class="video-wrap">
+</div>
+
+<div class="container-fluid main" id="main">
+
+	<div class="jumbotron" id="newsletter">
+		<div class="never-miss-a-trade overlay">
+			<a href="https://twitter.com/intent/tweet?text=%23NeverMissATrade+with+@boilrapp" target="_blank">
+				<h1>#NeverMissATrade</h1>
+			</a>
+		</div>
+		<div class="overlay">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-lg-offset-3">
+						<h1>Sign our newsletter</h1>
+						<form  method="POST" action="http://mail.boilr.mobi/subscribe/newsletter" target="_blank">
+							<input class="hide" type="radio" name="digest" value="0" checked="">
+							<div class="input-group">
+				    			<input type="email" class="form-control" name="email" value="" 
+				    				placeholder="Enter email">
+								<span class="input-group-btn">
+									<button type="Submit" name="email-button" class="btn btn-default">Subscribe</button>
+								</span>
+							</div>
+						</form>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="jumbotron" id="features">
+		<h1 class="translate">Features</h1>
+		<div class="row">
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/alarm-list.png" />
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Boilr is a free, as in freedom, Android app which monitors Bitcoin, cryptocurrencies, cryptoassets, futures and options, and triggers price alarms according to your settings.</p>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/exchanges.png"/>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Boilr supports 90+ exchanges and all their pairs.</br></br>Market data is retrieved directly from the exchanges via Wi-Fi or Mobile Data (if allowed), using <a href=\"https://github.com/drpout/libdynticker/#supported-exchanges\" target=\"_blank\">libdynticker</a>.</p>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<img src="img/screenshots/hit-creation.png" />
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<p><b>Price Hit</b></br></br>Triggered when price crosses the alarm's upper or lower limit. One limit may be left empty to create an alarm with a single trigger.</p>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/change-creation.png" />
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p><b>Price Change</b></br></br>Triggered when price changes more than X amount (in currency or percentage) in a specified time frame (e.g. 15 min). It uses a rolling time frame: price is fetched with a given update interval (e.g. 30 s) and compared with the price fetched one time frame ago (e.g. 15 min ago).</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/hit-firing.png" />
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Triggered alarms ring, displaying their status, until you turn them off. Just like an alarm clock.</br>Alarms can also be set to snooze automatically on price retrace.</p>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/search-pairs.png"/>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Lists of exchanges, pairs and alarms are fully searchable, allowing quick alarm setup and configuration.</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/app-settings.png" />
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Sound and vibration are configurable globally and individually for each alarm.</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/deleting-alarm.png"/>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Delete alarms with a swipe.</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/reordering-alarm.png"/>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Reorder alarms after a long click.</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/lang-chinese.png"/>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>Supports multiple languages: Chinese, Czech, French, German, Italian, Japanese, Polish, Portuguese, Russian and Spanish.</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 row">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
+					<img src="img/screenshots/ligh-theme.png"/>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<p>There is an alternative light theme.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron" id="download">
+		<h1>Download and Fork</h1>
+		</br>
+		<div class="row small-img">
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-fdroid.png">
+				<h2 class="text-center">F-Droid</h2>
+				<p class="text-center sub-title" style="color: transparent;">P</p>
+				<p class="text-center">
+					<a id="fdroid-link"
+						href="https://f-droid.org/repository/browse/?fdid=mobi.boilr.boilr"
+						target="_blank" class="btn btn-default sharp">DOWNLOAD</a>
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-googleplay.png">
+				<h2 class="text-center">Google Play</h2>
+				<p class="text-center sub-title" style="color: transparent;">P</p>
+				<p class="text-center">
+					<a id="play-link"
+						href="https://play.google.com/store/apps/details?id=mobi.boilr.boilr"
+						target="_blank" class="btn btn-default sharp">DOWNLOAD</a>
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-apk.png">
+				<h2 id="text-apk" class="text-center">APK</h2>
+				<div id="qr-apk" class="hidden"></div>
+				<p class="text-center sub-title">
+					(<a id="qr-apk-link">Please enable JavaScript</a>)
+				</p>
+				<p class="text-center">
+					<a id="apk-link" href="" class="btn btn-default sharp disabled">DOWNLOAD</a>
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img src="img/icon-github.png" class="image-clip center-block">
+				<h2 class="text-center">Source Code</h2>
+				<p class="text-center sub-title" style="color: transparent;">P</p>
+				<p class="text-center">
+					<a href="https://github.com/drpout/boilr" target="_blank"
+						class="btn btn-default sharp">GitHub</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="jumbotron" id="support">
+		<h1>Support</h1>
+		</br>
+		<p>Bug reports, feature requests and general help questions should be submitted on our <a id="issues-link" href="https://github.com/drpout/boilr/issues" target="_blank">GitHub issues</a>.</br>Try being specific when choosing the right title and label for your issue.</p>
+		<p>You can browse through a FAQ by checking all <a id="faq-link" href="https://github.com/drpout/boilr/issues?q=label%3Aquestion" target="_blank">issues labeled as questions</a>.</p>
+	</div>
+	
+	<div class="jumbotron" id="permissions">
+		<h1>Permissions</h1>
+		</br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Permission</th>
+					<th>Reason</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Read the contents of your SD card</td>
+					<td>Used to fetch your custom ringtones.</td>
+				</tr>
+				<tr>
+					<td>Disable your screen lock</td>
+					<td>So you can turn off a ringing alarm without unlocking your device.</td>
+				</tr>
+				<tr>
+					<td>Full network access</td>
+					<td>To fetch data from the exchanges.</td>
+				</tr>
+				<tr>
+					<td>View network connections</td>
+					<td>To know whether you're using Wi-Fi or Mobile Data, allowing Mobile Data restriction.</td>
+				</tr>
+				<tr>
+					<td>Run at startup</td>
+					<td>To grab your active alarms and start updating them.</td>
+				</tr>
+				<tr>
+					<td>Control vibration</td>
+					<td>Allows vibration when an alarm is triggered.</td>
+				</tr>
+				<tr>
+					<td>Prevent phone from sleeping</td>
+					<td>Used to keep showing the alarm triggered activity until you press the turn off button.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="jumbotron" id="exchanges">
+		<h1>Supported Exchanges</h1>
+		</br>
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>1BTCXE</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>1Ex.Trade</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Allcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>ANX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bit2C</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitBay</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitcoin.de</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitcoins Norway</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitcoinToYou</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitcurex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitfinex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>bitFlyer</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitKonan</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitMarket.pl</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitMaszyna</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitMEX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitso</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitstamp</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bitt</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bittrex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitVC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BitX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BL3P</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BleuTrade</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC Markets</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC-E</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC100</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTC38</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCBOX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCChina</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCExchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BtcTrade</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCTurk</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BTCXIndia</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Bter</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>BullionVault</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>C-CEX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CampBX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CEX.IO</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CHBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>ChileBit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinage</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coincheck</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinfloor</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinMate</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinplug</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinsBank</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinsecure</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinSquare</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CoinTree</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Coinut</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>CRXzone</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Crypto Facilities</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Cryptonit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Cryptopia</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Digital Securities Exchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>EmpoEX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>FOXBIT</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>FYB-SE</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>FYB-SG</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Gatecoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>GDAX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>HitBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Huobi</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Ice3x</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Indacoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Independent Reserve</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>itBit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Korbit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Kraken</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>LakeBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Livecoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>LocalBitcoins</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Loyalbit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Mercado Bitcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Mulcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>NXT Asset Exchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>OKCoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Paymium</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Poloniex</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Quadriga CX</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Quoine</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>SurBitcoin</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>SURBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Thailand Bitcoin Exchange</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>The Rock Trading</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Urdubit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Vaultoro</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>VBTC</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>VirWox</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Yobit</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Yuanbao</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Zaif</p></div>
+			<div class="col-md-3 col-sm-6 col-xs-6"><p>Zyado</p></div>
+		</div>
+	</div>
+
+	<div class="jumbotron" id="donate">
+		<h1>Donate or Tip</h1>
+		</br>
+		<p>Boilr is <a href="https://www.gnu.org/copyleft/gpl.html"
+				target="_blank">(free as in freedom) software</a>. If useful, consider making a donation or sending a tip:
+		</p>
+		<div style='word-break: break-all;' class="row small-img">
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-bitcoin.png">
+				<h2 class="text-center">Bitcoin</h2>
+				<p class="text-center sub-title">
+					<a href="bitcoin:1PHuSWfuAwR6oz9qV93rTdMVozfM85Qqxx">1PHuSWfuAwR6oz9qV93rTdMVozfM85Qqxx</a><br />
+					(<a id="qr-donation-btc" href="img/donations-btc.png">QR Code</a>)
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-monero.png">
+				<h2 class="text-center">Monero</h2>
+				<p class="text-center sub-title">43KcTwXw5D43YRE8MSG4D7X3S2kjU6ehBABucyKAVNYnKbNxpGWZ8zGbEhCq79N4ZGDtefU5w4AGoeR6eNB5yMbEPhAw3FT</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-dogecoin.png">
+				<h2 class="text-center">Dogecoin</h2>
+				<p class="text-center sub-title">
+					<a href="dogecoin:DSSJyAtJy9xokkbfTUQ5NQov8M1WQ8FaYg">DSSJyAtJy9xokkbfTUQ5NQov8M1WQ8FaYg</a><br />
+					(<a id="qr-donation-doge" href="img/donations-doge.png">QR
+						Code</a>)
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<img class="image-clip center-block" src="img/icon-nextcoin.png">
+				<h2 class="text-center">Nextcoin</h2>
+				<p class="text-center sub-title">NXT-PMQL-5RXJ-QE46-2L4SQ</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel-footer">
+		<p>Original F-Droid logo by William Theaker and Robert Martinez.
+				Bitcoin logo by <a href="http://bitcoinsymbol.org" target="_blank">ECOGEX</a>.
+				Envelope icon by <a href="http://pixabay.com/en/envelope-mail-post-letter-petrol-306781" target="_blank">Nemo</a>.
+				Reddit icon by <a href="http://www.flaticon.com/authors/icomoon" target="_blank">Icomoon</a>.
+				<br/>
+				Modifed version of F-Droid logo and Monero, Dogecoin and Nextcoin icons by <a href="https://github.com/andrefbsantos" target="_blank">André Filipe Santos</a>,
+				<a href="https://github.com/dllud" target="_blank">David Ludovino</a>.
+				Boilr icon by <a href="http://cargocollective.com/algazarra/index" target="_blank">Algazarra</a>.
+				All licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC-BY-SA 4.0</a>.
+				<br />
+				Website source-code is available <a href="https://github.com/drpout/boilr-site" target="_blank"> github.com/drpout/boilr-site</a>.
+				Licensed under <a href="https://github.com/drpout/boilr-site/blob/gh-pages/LICENSE" target="_blank">GNU AGPL v3+</a>.
+				<br/>
+				<a href="jslicense.html" rel="jslicense">JavaScript license information</a>
+		</p>
+	</div>
+</div>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/handlebars-v3.0.0.min.js"></script>
+	<script src="js/jquery.nav.min.js"></script>
+	<script src="js/qrcode.min.js"></script>
+	<script src="js/colorbox.min.js"></script>
+	<script src="js/backgroundVideo.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script>
+		var fade = 0.5;
+		function setup(userLang){
+			var strings = "json/"+userLang+".json"
+			$.getJSON(strings, function(i18nStrings) {
+				setupLanguage(i18nStrings);
+				setupSite(i18nStrings);
+			}).fail(function(){
+				//Back to english
+				$.getJSON("json/en.json", function(i18nStrings) {
+					setupLanguage(i18nStrings);
+		 			setupSite(i18nStrings);
+				});
+			});	
+		}
+		
+		function setupLanguage(i18nStrings){
+			var videoTemplate = $('#video-template').html();
+			videoTemplate = Handlebars.compile(videoTemplate);
+			
+			var video_wrap = $('#video-wrap');
+			video_wrap.empty().append(videoTemplate(i18nStrings));
+
+			var navTemplate = $("#nav-template").html();
+			navTemplate = Handlebars.compile(navTemplate);
+			
+			var nav_bar = $('#navbar');
+			$(nav_bar).empty().append(navTemplate(i18nStrings));
+			
+			var mainTemplate = $("#main-template").html();
+			mainTemplate = Handlebars.compile(mainTemplate);
+			$('#main').empty().append(mainTemplate(i18nStrings));
+		 }
+
+		 function setupSite(i18nStrings){
+		 	var nav_bar = $('#navbar');
+		 	
+		 	var url = window.location.href;
+			if(url.indexOf("#video-wrap") > -1 || url.indexOf("#") === -1 ){
+				$(nav_bar).fadeTo(0,fade);
+			}
+
+			var owl = $('#owl');
+			$(nav_bar).onePageNav({
+				currentClass : 'active',
+				changeHash : true,
+				filter : ':not(.external)',
+				scrollThreshold : 0.5,
+				scrollChange: function (nav){
+					//console.log($(nav).find('a')[0]['hash']);
+					if($(nav).find('a').attr('href') ==='#video-wrap'){
+						$('#navbar').fadeTo(400,fade);
+					}else{
+						if($(nav).find('a')[0]['hash'] ==='#features'){
+							owl.trigger("owl.jumpTo",0);
+						}
+						$('#navbar').fadeTo(400,1);
+					}
+				}
+			});
+			
+			$('#nav li a').click(function(){
+				//console.log($(this)[0]["hash"]);
+				if($(this)[0]["hash"] ==="#features"){
+					owl.trigger("owl.jumpTo",0);
+				}
+				$(nav_bar).fadeTo(400,1);
+			});
+			
+			$('.navbar-inner ').click(function(){
+				$(nav_bar).fadeTo(400,fade);
+			});
+
+			$('#qr-donation-btc').colorbox({
+				href : 'img/donations-btc.png',
+				title : i18nStrings['BTCDonationAddress']
+			});
+			$('#qr-donation-doge').colorbox({
+				href : 'img/donations-doge.png',
+				title : i18nStrings['DOGEDonationAddress']
+			});
+
+			var ua = navigator.userAgent.toLowerCase();
+			if(ua.indexOf("android") > -1){
+				$('#fdroid-link').attr('href', 'fdroid.app:mobi.boilr.boilr');
+				$('#play-link').attr('href', 'market://details?id=mobi.boilr.boilr');
+			}
+
+			var tsoh = 'boilr.mobi';
+			var liame = 'info@' + tsoh;
+			$('#email-link').attr('href', 'mail' + 'to:' + liame);
+			$('#email-link-text').remove();
+
+			var qrApkLink = $('#qr-apk-link');
+			(function() {
+			$.ajax({
+				url : 'https://api.github.com/repos/drpout/boilr/releases'
+				}).done(
+					function(releaseData) {
+						if (releaseData.length > 0) {
+							var version = releaseData[0].tag_name;
+							var url = releaseData[0].assets[0].browser_download_url;
+							var apkLink = $('#apk-link');
+							apkLink.attr('href',url);
+							apkLink.removeClass('disabled');
+							var textApk = $('#text-apk');
+							textApk.text(textApk.text()	+ ' v'+ version);
+							var qrcode = new QRCode('qr-apk');
+							qrcode.makeCode(url);
+							qrApkLink.text(i18nStrings['QRCode']);
+							qrApkLink.attr('href','javascript:void(0);');
+							qrApkLink.colorbox({
+								inline : true,
+								href : $('#qr-apk img'),
+								title : 'APK v' + version
+							});
+						} else {
+							qrApkLink.text(i18nStrings['errorGitHub']);
+					}
+				}).fail(function() {
+					qrApkLink.text(i18nStrings['errorGitHub']);
+				});
+			})();
+			
+			$('#video_background').backgroundVideo({
+				parallaxOptions: {
+			        effect: 1.2
+			    }
+			});
+
+			//console.log($('video').height());
+		
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+				owl.owlCarousel({
+					autoPlay: 6000, //Set AutoPlay to 3 seconds
+					navigation : false, // Show next and prev buttons
+					slideSpeed : 400,
+					paginationSpeed : 300,
+					singleItem : true,
+					navigation : false,
+					lazyLoad : true,
+					afterAction : afterAction
+				});
+				$('div.owl-controls').css('display','none');
+				$('#explain > p').css("margin-top","0px");
+			} else {
+				owl.owlCarousel({
+					autoPlay: 6000, //Set AutoPlay to 3 seconds
+					navigation : true, // Show next and prev buttons
+					slideSpeed : 400,
+					paginationSpeed : 300,
+					singleItem : true,
+					navigation : false,
+					lazyLoad : true,
+					afterAction : afterAction
+				});
+			}
+			var innerHeight = window.innerHeight*3/4;
+			$('#owl .item img').css("max-height", innerHeight);
+
+			function afterAction(){
+				var owl = this;
+				$('#explain > p').fadeOut(200,function(){
+					$(this).empty().append(i18nStrings["featureImage"+owl.owl.currentItem]).fadeIn(200);
+				});
+			}
+
+			function myFadeTo(elem,time,fade){
+				$(elem).fadeTo(time,fade);
+			}
+
+			var overlay_class = $('.overlay');
+
+			var overlayFade = 0.7;
+			$(overlay_class).fadeTo(0,overlayFade);
+			$(overlay_class).hover(function(){
+				myFadeTo(this,200,1);
+			},function(){
+				myFadeTo(this,200,overlayFade);
+			});
+
+			var input_ele = $('input') 
+			$(input_ele).focus(function(){
+				$(overlay_class).fadeTo(200,1);
+			});
+
+			$(input_ele).blur(function(){
+				$(overlay_class).fadeTo(200,fade);
+			});
+		 }
+
+		 Handlebars.registerHelper('toUpperCase', function(str) {
+			if(str && typeof str ==='string'){
+	  			return str.toUpperCase();
+	  		} else {
+	  			return str;
+	  		}
+		});
+
+		function getQueryVariable(variable) {
+			var query = window.location.search.substring(1);
+  			var vars = query.split("&");
+			for (var i=0; i<vars.length; i++) {
+    			var pair = vars[i].split("=");
+    			if (pair[0] == variable) {
+      				return pair[1];
+    			}
+  			}
+  			//When everything fails, return english
+  			return "en";
+		}
+
+		$(document).ready( function() {	
+			var userLang = getQueryVariable("lang");
+			setup(userLang);
+		});		
+	</script>
+</body>
+</html>
