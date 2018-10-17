@@ -1,10 +1,70 @@
 <html>
+
 <head>
-<title>Pay To Kang Aan Wasi</title>
+
+<title>Donate to Kang Aan Wasi</title>
+
+<style>
+body {
+    font-family: 'Lucida Grande', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+}
+
+#comment_form input, #comment_form textarea {
+    border: 2px solid rgba(0,0,0,0.1);
+    padding: 8px 10px;
+    outline: 0;
+}
+#comment_form input {
+    width: 250px;
+}
+#comment_form textarea {
+    width: 450px;
+}
+
+#comment_form input[type="submit"] {
+    cursor: pointer;
+    background: -webkit-linear-gradient(top, #efefef, #ddd);
+    background: -moz-linear-gradient(top, #efefef, #ddd);
+    background: -ms-linear-gradient(top, #efefef, #ddd);
+    background: -o-linear-gradient(top, #efefef, #ddd);
+    background: linear-gradient(top, #efefef, #ddd);
+    color: #333;
+    text-shadow: 0px 1px 1px rgba(255,255,255,1);
+    border: 1px solid #ccc;
+}
+
+#comment_form input[type="submit"]:hover {
+    background: -webkit-linear-gradient(top, #eee, #ccc);
+    background: -moz-linear-gradient(top, #eee, #ccc);
+    background: -ms-linear-gradient(top, #eee, #ccc);
+    background: -o-linear-gradient(top, #eee, #ccc);
+    background: linear-gradient(top, #eee, #ccc);
+    border: 1px solid #bbb;
+}
+
+#comment_form input[type="submit"]:active {
+    background: -webkit-linear-gradient(top, #ddd, #aaa);
+    background: -moz-linear-gradient(top, #ddd, #aaa);
+    background: -ms-linear-gradient(top, #ddd, #aaa);
+    background: -o-linear-gradient(top, #ddd, #aaa);
+    background: linear-gradient(top, #ddd, #aaa);    
+    border: 1px solid #999;
+}
+
+#comment_form div {
+    margin-bottom: 8px;
+}
+</style>
+
 </head>
+
 <body>
+
+<center>
 <p><big><b>Make a Donation to Kang Aan Wasi</b></big><br />
 Fill out the form and send us a few dollars for me:</p>
+</center>
  
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
  
@@ -18,20 +78,29 @@ Fill out the form and send us a few dollars for me:</p>
 
 <!-- User Information -->
 <strong>User Information</strong><br />
-First Name: <input type="text" name="first_name">
-<br />
-Last Name: <input type="text" name="last_name">
-<br />
-Address <input type="text" name="address1">
-<br />
-City <input type="text" name="city">
-<br />
-State <input type="text" name="state">
-<br />
-Zip <input type="text" name="zip">
-<br />
-Country <input type="text" name="country">
-<br />
+ <div id="comment_form">
+  <div>
+   <input type="text" name="first_name" value="" placeholder="First Name">
+  </div>
+  <div>
+   <input type="text" name="last_name" value="" placeholder="Last Name">
+  </div>
+  <div>
+   <input type="text" name="address1" value="" placeholder="Address">
+  </div>
+  <div>
+   <input type="text" name="city" value="" placeholder="City">
+  </div>
+  <div>
+   <input type="text" name="state" value="" placeholder="State">
+  </div>
+  <div>
+   <input type="text" name="zip" value="" placeholder="Zip">
+  </div>
+  <div>
+   <input type="text" name="country" value="" placeholder="Country">
+  </div>
+ </div>
 
 <!-- Amount of Payment -->
 <strong>Amount of Payment</strong><br />
@@ -45,8 +114,9 @@ $ <input type="text" name="amount">
 <input type="hidden" name="return" value="https://aanwhs.github.io/payment/payment-complete.html">
 
 <br /><br />
-<input type="submit" value="Donate with PayPal!">
-
+<center><input type="submit" value="Donate with PayPal!"></center>
 </form>
+
 </body>
+
 </html>
