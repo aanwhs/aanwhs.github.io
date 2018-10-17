@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Pay To Kang Aan Wasi</title>
+</head>
+<body>
+<p><big><b>Make a Donation to Kang Aan Wasi</b></big><br />
+Fill out the form and send us a few dollars for me:</p>
+ 
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+ 
+<!-- Payment Information -->
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="aan.whs@gmail.com">
+<strong>Which tutorial are you donating for?</strong><br />
+<input type="hidden" name="item_name" value="Donation">
+<input type="hidden" name="item_number" value="DONATION">
+<input type="hidden" name="tax" value="1">
+
+<!-- User Information -->
+<strong>User Information</strong><br />
+$ <input type="text" name="first_name">
+$ <input type="text" name="last_name">
+$ <input type="text" name="address1">
+$ <input type="text" name="city">
+$ <input type="text" name="state">
+$ <input type="text" name="zip">
+$ <input type="text" name="country">
+
+ <!-- Amount of Payment -->
+<strong>Amount of Payment</strong><br />
+$ <input type="text" name="amount">
+
+<input type="hidden" name="no_shipping" value="0">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="AU">
+<input type="hidden" name="bn" value="Donation">
+<input type="hidden" name="return" value="https://aanwhs.github.io/payment/payment-complete.html">
+
+<br /><br />
+<input type="submit" value="Donate with PayPal!">
+
+</form>
+</body>
+</html>
