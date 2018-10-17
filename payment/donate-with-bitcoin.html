@@ -64,9 +64,10 @@ body {
 Fill out the form and send us a few dollars for me:</p>
 
  
-<form action="https://www.blockchain.com/btc/payment_request?address=1AanWHSKhWLcKDVp64jWuRmkKEtrecXaFa&message=Donate" method="get">
+<form action="https://www.blockchain.com/btc/payment_request" method="get">
  
 <!-- Payment Information -->
+<input type="hidden" name="addresd" value="1AanWHSKhWLcKDVp64jWuRmkKEtrecXaFa">
 <input type="hidden" name="message" value="Donate">
 <input type="hidden" name="currency" value="USD">
 <input type="hidden" name="nosavecurrency" value="true">
