@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+
+	<!-- /*--------------------------------------------------------------------------
+	Developed by aanwhs.github.com
+	-------------------------------------------------------------------------- */ -->
+
+<head>
+
+	<link rel="icon" type="image/png" href="">
+	
+	<title>About - Kang Aan Wasi</title>
+	
+	<meta name="description" content="About Kang Aan Wasi." />
+	<meta name="Keywords" content="Kang Aan Wasi, Hadi Setiawan, aanwhs" />
+	<meta name="Author" content="Kang Aan Wasi" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --->
+	
+	<link rel="stylesheet" href="data/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="data/css/custom.css">
+	<link rel="stylesheet" href="data/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+	<div class="topnav" id="myTopnav">
+		<a href="/" target="_blank"><i class="fa fa-home"></i></a>
+		<a href="/about.html" target="_blank">About</a>
+		<a href="/contact.html" target="_blank">Contact</a>
+		<a href="https://github.com/aanwhs/aanwhs.github.io/wiki" target="_blank">Wiki</a>
+		<a href="https://aanwhs.blogspot.com" target="_blank">Blog</a>
+		<a href="javascript:void(0);" class="icon" onclick="MyFunctionMenu()"><i class="fa fa-bars"></i></a>
+	</div>
+	
+	<div class="content-list-wrap text-center">
+		<h1>
+			<b>{+} About {+}</b>
+		</h1>
+	</div>
+	
+	<script type="text/javascript">/*<![CDATA[*/
+		TypingText = function(element, interval, cursor, finishedCallback) {
+			if((typeof document.getElementById == "undefined") || (typeof element.innerHTML == "undefined")) {
+				this.running = true;
+				return;
+			}
+			this.element = element;
+			this.finishedCallback = (finishedCallback ? finishedCallback : function() { return; });
+			this.interval = (typeof interval == "undefined" ? 100 : interval);
+			this.origText = this.element.innerHTML;
+			this.unparsedOrigText = this.origText;
+			this.cursor = (cursor ? cursor : "");
+			this.currentText = "";
+			this.currentChar = 0;
+			this.element.typingText = this;
+			if(this.element.id == "") this.element.id = "typingtext" + TypingText.currentIndex++;
+			TypingText.all.push(this);
+			this.running = false;
+			this.inTag = false;
+			this.tagBuffer = "";
+			this.inHTMLEntity = false;
+			this.HTMLEntityBuffer = "";
+		}
+		TypingText.all = new Array();
+		TypingText.currentIndex = 0;
+		TypingText.runAll = function() {
+			for(var i = 0; i < TypingText.all.length; i++) TypingText.all[i].run();
+		}
+		TypingText.prototype.run = function() {
+			if(this.running) return;
+			if(typeof this.origText == "undefined") {
+				setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval);
+				return;
+			}
+			if(this.currentText == "") this.element.innerHTML = "";
+			if(this.currentChar < this.origText.length) {
+				if(this.origText.charAt(this.currentChar) == "<" && !this.inTag) {
+					this.tagBuffer = "<";
+					this.inTag = true;
+					this.currentChar++;
+					this.run();
+					return;
+				} else if(this.origText.charAt(this.currentChar) == ">" && this.inTag) {
+					this.tagBuffer += ">";
+					this.inTag = false;
+					this.currentText += this.tagBuffer;
+					this.currentChar++;
+					this.run();
+					return;
+				} else if(this.inTag) {
+					this.tagBuffer += this.origText.charAt(this.currentChar);
+					this.currentChar++;
+					this.run();
+					return;
+				} else if(this.origText.charAt(this.currentChar) == "&" && !this.inHTMLEntity) {
+					this.HTMLEntityBuffer = "&";
+					this.inHTMLEntity = true;
+					this.currentChar++;
+					this.run();
+					return;
+				} else if(this.origText.charAt(this.currentChar) == ";" && this.inHTMLEntity) {
+					this.HTMLEntityBuffer += ";";
+					this.inHTMLEntity =
+					false;
+					this.currentText += this.HTMLEntityBuffer;
+					this.currentChar++;
+					this.run();
+					return;
+				} else if(this.inHTMLEntity) {
+					this.HTMLEntityBuffer +=
+					this.origText.charAt(this.currentChar);
+					this.currentChar++;
+					this.run();
+					return;
+				} else {
+					this.currentText += this.origText.charAt(this.currentChar);
+				}
+				this.element.innerHTML = this.currentText;
+				this.element.innerHTML += (this.currentChar < this.origText.length - 1 ? (typeof this.cursor == "function" ?
+				this.cursor(this.currentText) : this.cursor) : "");
+				this.currentChar++;
+				setTimeout("document.getElementById('" + this.element.id + "').typingText.run()",
+				this.interval);
+			} else {
+				this.currentText = "";
+				this.currentChar = 0;
+				this.running = false;
+				this.finishedCallback();
+			}
+		}
+	/*]]>*/</script>
+	
+	<div class="content-list-wrap">
+		<p id="Message">
+			<span style="color: blue;">
+				Hi, my name is Hadi Setiawan.
+				<br />
+				Call me Aan Wasi!
+				<br />
+				Im from Banten in Indonesia.
+				<br />
+				My skills is: Computer, Internet Marketing, and IT.
+			</span>
+		</p>
+	</div>
+	
+	<div class="content-copyrights">
+		<div class="col-sm-4">
+			<div class="footer-widget">
+				<h5 class="title">Contact</h5>
+				<ul>
+					<li><a href="mailto:" target="_blank"><i class="fa fa-envelope-o"></i> Email</a></li>
+					<li><a href="tel:62" target="_blank"><i class="fa fa-phone-square"></i> +62</a></li>
+					<li><a href="https://facebook.com/kangaanwasi" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+					<li><a href="https://twitter.com/aanwhs" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+					<li><a href="https://instagram.com/aanwhs" target="_blank"><i class="fa fa-instagram"></i> Instagram</a></li>
+					<li><a href="" target="_blank"><i class="fa fa-youtube-square"></i> YouTube</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="footer-widget">
+				<h5 class="title">Pages</h5>
+				<ul>
+					<li><a href="/about.html" target="_blank">About</a></li>
+					<li><a href="/contact.html" target="_blank">Contact</a></li>
+					<li><a href="https://github.com/aanwhs/aanwhs.gitub.io/wiki" target="_blank">Wiki</a></li>
+					<li><a href="https://aanwhs.blogspot.com" target="_blank">Blog</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="footer-widget">
+				<h5 class="title">Others</h5>
+			</div>
+		</div>
+	</div>
+
+	<div class="copyrights">
+		<p align="center">
+		<marquee scrollamount="3" width="50%">
+			Developed with <i class="fa fa-heart"></i> by Kang Aan Wasi.
+		</marquee>
+		</p>
+		<p align="center">
+			&#169; 2014-2019 aanwhs.github.io, All Rights Reserved.
+		</p>
+	</div>
+	
+	<script>
+		function MyFunctionMenu() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
+	</script>
+	<script type="text/javascript">/*<![CDATA[*/
+		new TypingText(document.getElementById("Message"), 90, function(i){ var ar = new Array("_", " ", "_", " "); return " " + ar[i.length % ar.length]; });
+		//Type out examples:
+		TypingText.runAll();
+	/*]]>*/</script>
+
+</body>
+
+</html>
