@@ -1,0 +1,3 @@
+function OnClickFunction() {
+	window.open('https://layarlink.blogspot.com/2020/03/pengertian-shortlink-dan-safelink.html#?o=b7e84c99ea0de5f2a31d9a566d58aaf8bb9145b771e4b46a0fda09fd6f0842645c0334a749395b62a49c2679eba76661b6bdbf894ffbb8bb980174fa957d867c61598c6f661e5ba240df44b29b862612ea34bd176a4744f1885c7a3b74085b4de70a0962683fb733ae608e6259b52ac9d821a0b6e79abf04','_blank');
+}
