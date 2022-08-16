@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*!
+* Aan Wasi - Custom Cascading Style Sheets (https://aanwhs.gihub.io/css/custom-cascading-style-sheets.css)
+* Copyright 2014-2022 Kang Aan Wasi
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+*/
+
+
+
+/* For Get Code */
+#ForGetCode {
+	width: 100%;
+	padding: 50px 0;
+	text-align: center;
+	background-color: lightblue;
+	margin-top: 20px;
+}
+
+
+
+/* Iframe Responsive */
+.container-responsive-iframe-1_1 {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 100%; /* 1:1 Aspect Ratio */
+}
+.container-responsive-iframe-4_3 {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 75%; /* 4:3 Aspect Ratio */
+}
+.container-responsive-iframe-3_2 {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 66.66%; /* 3:2 Aspect Ratio */
+}
+.container-responsive-iframe-8_5 {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 62.5%; /* 8:5 Aspect Ratio */
+}
+.container-responsive-iframe-16_9 {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+.container-responsive-iframe {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 50%; /* 50% Aspect Ratio */
+}
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
